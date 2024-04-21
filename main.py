@@ -116,6 +116,7 @@ def process_video(video_path, frame_rate, headers):
     results = []
     print("总帧数:", frame_count)
     for i in range(0, frame_count, frame_rate):
+        cap.set(cv2.CAP_PROP_POS_FRAMES, i)  # 确保跳到正确的帧
         ret, frame = cap.read()
         if not ret:
             break
